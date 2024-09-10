@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLD-TANGERINE RATE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>Con una unidad de oro puedes comprar aproximadamente <span id="mandarins">cargando...</span> mandarinas.</p>
+    <script>
+        fetch('http://localhost:8080/mandarins')
+            .then(response => response.text())
+            .then(data => {
+                // Ahora data es solo un número en forma de cadena
+                const mandarins = parseFloat(data);
+                if (!isNaN(mandarins)) {
+                    document.getElementById('mandarins').textContent = mandarins.toFixed(2);
+                } else {
+                    document.getElementById('mandarins').textContent = 'Error: Valor inválido';
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el número de mandarinas:', error);
+                document.getElementById('mandarins').textContent = 'Error: No se pudo obtener el número de mandarinas';
+            });
+    </script>
+</body>
+</html>
