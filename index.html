@@ -9,7 +9,7 @@
 <body>
     <p>Con una unidad de oro puedes comprar aproximadamente <span id="mandarins">cargando...</span> mandarinas.</p>
     <script>
-        fetch('http://localhost:8080/mandarins')
+        fetch('/mandarins')
             .then(response => response.text())
             .then(data => {
                 // Ahora data es solo un número en forma de cadena
